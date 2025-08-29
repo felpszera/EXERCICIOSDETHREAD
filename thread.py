@@ -8,36 +8,21 @@ Comente o máximo possível no código, explicando os detalhes de cada ponto.
 Entregar um arquivo em formato .py por meio de repositório GitHub.
 """
 
+import threading
+import time
 
-import threading #importa a biblioteca threading para trabalhar com threads
-import time #importa a biblioteca time para usar sleep
+def x (nome, inicio, fim):
+    for i in range (inicio, fim +1):
+        print(f"{nome} -> {i}")
+        time.sleep(0.5)
 
-# Função que será executada pela thread-1
-def x ():
-    # Laço de repetição que vai de 1 até 10
-    for i in range(1, 11):
-        print(f"Thread-1: {i}") #imprime o número de 1 a 10
-        time.sleep(0.5) #pausa de 0,5s entre cada numero impresso que simula tempo de processamento
+thread1 = threading.Thread(target=x, args=("Thread1", 1, 10))
+thread2 = threading.Thread(target=x, args=("Thread2", 20, 30))
 
+thread1.start()
+thread2.start()
 
-t1 = threading.Thread(target=x) # Cria a primeira thread e associa a função x.
-t1.start() # inicia a execução da primeira thread.
-t1.join() #aguarda a execução do laço para continuar o código.
+thread1.join()
+thread2.join()
 
-# Função que será executada pela thread-2
-def y ():
-    # Laço de repetição que vai de 50 até 60
-    for i in range(50, 61):
-        print(f"Thread-2: {i}") #imprime o número de 50 até 60
-        time.sleep(0.5) #pausa de 0,5s entre cada numero impresso que simula tempo de processamento
-
-
-t2 = threading.Thread(target=y) # Cria a primeira thread e associa a função y.
-t2.start() # inicia a execução da primeira thread.
-t2.join() #aguarda a execução do laço para continuar o código.
-
-print("Thread1 finalizada!") #mostra que a thread 1 foi finalizada
-print("Thread2 finalizada!") #mostra que a thread 2 foi finalizada
-
-print("Programa finalizado!") #mostra que o programa foi finalizado
-    
+print("Programa finalizado")
