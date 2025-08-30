@@ -17,7 +17,7 @@ def x (nome, inicio, fim): #cria uma função X
         time.sleep(0.5) #o tempo de uma repetição para outra é de 0.5 segundos
 
 thread1 = threading.Thread(target=x, args=("Thread1", 1, 10)) #cria a thread1 e relaciona o laço de repetição a ela, e ainda informa o inicio e o fim da contagem.
-thread2 = threading.Thread(target=x, args=("Thread2", 20, 30)) #cria a thread2 e relaciona o laço de repetição a ela, e ainda informa o inicio e o fim da contagem.
+thread2 = threading.Thread(target=x, args=("Thread2", 50, 60)) #cria a thread2 e relaciona o laço de repetição a ela, e ainda informa o inicio e o fim da contagem.
 
 thread1.start() #inicia a thread1
 thread2.start() #inicia a thread1
@@ -26,4 +26,5 @@ thread1.join() #finaliza thread1
 thread2.join() #finaliza a thread2
 
 print("Programa finalizado") #imprime mensagem que finaliza o programa
+
 
